@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+<style>
+     .swing-top-fwd {
+      -webkit-animation: swing-top-fwd 0.7s ease-out reverse both;
+      animation: swing-top-fwd 0.7s ease-out reverse both;
+    }
+    .image{
+    background-image: url("https://metal-static.onrender.com/bgabout.jpg");
+    width: 100%;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-size:cover;
+    background-position-y: center;
+    background-position-x: 60%;
+    }
+    @media screen and (max-width: 371px)
+{  body{
+    display: inline-flex;
+    flex-direction: column;
+  }
+}
+</style>
+
+<body>
+
+  <section
+    class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply image">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+      <h1
+        class="mb-40 text-8xl font-extrabold tracking-tight leading-none text-white md:text-7xl lg:text-7xl swing-top-fwd">
+        ABOUT US</h1>
+      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+
+      </div>
+    </div>
+</section>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6" class="text-center">
+      <div class="max-w-screen-md mb-8 lg:mb-16">
+        <h2 class="mb-4 text-6xl font-extrabold text-blue-800 dark:text-blue-300 line-height: 10rem tracking-in-expand">
+          Bringing for enthusisatic people like you!</h2>
+      </div>
+      <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800 tracking-in-expand">BEING SPECIFIC</h3>
+          <p class="text-black-500 dark:text-gray-400">If you're looking to target a specific muscle group, our search
+            feature allows you to search for exercises based on the muscle group you want to work on</p>
+        </div>
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12 p-1.5">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800">LEVELS</h3>
+          <p class="text-black-500 dark:text-gray-400">You can also search for exercises based on your fitness level,
+            whether you're a beginner, intermediate, or advanced.
+          </p>
+        </div>
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12 dark:bg-primary-900 p-1.5">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800">EQUIPMENT</h3>
+          <p class="text-black-500 dark:text-gray-400">Our search feature also allows you to search for exercises based
+            on the equipment you have available, so you can find exercises that fit your workout environment.</p>
+        </div>
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12 dark:bg-primary-900 p-1.5">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800">EASY TO USE</h3>
+          <p class="text-black-500 dark:text-gray-400">With our user-friendly search feature, you can easily find the
+            exercises that are best suited for your fitness needs and goals.
+          </p>
+        </div>
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12 dark:bg-primary-900 p-1.5">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800">COMMITMENT</h3>
+          <p class="text-black-500 dark:text-gray-400">At our website, we are committed to providing you with the
+            resources you need to achieve your fitness goals. </p>
+        </div>
+        <div>
+          <div
+            class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-white lg:h-12 lg:w-12 dark:bg-primary-900 p-1.5">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0">
+              </path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-3xl font-bold dark:text-white text-blue-800">GET SET GO</h3>
+          <p class="text-black-500 dark:text-gray-400">Whether you're a seasoned fitness enthusiast or just starting
+            out, our website has something for everyone. So why wait?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: black;
+}
+
+::selection {
+  color: rgb(255, 255, 255);
+  background: black;
+}
+  </style>
+{% endblock %}
