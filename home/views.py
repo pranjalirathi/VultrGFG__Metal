@@ -14,28 +14,6 @@ def bard(data):
     response = requests.post(url, headers=headers, json=data)
     return dict(response.json()).get('candidates')[0].get('output') #read about webhooks in python flask
 
-
-# def personalized_diet_chart(data):
-#     key="VBHWST6PTCC5W6RS72ORMETOBZO6YSO4UQIA"
-#     vultr_api_url = "url  ..."
-#     headers = {
-#              "Content-Type": "application/json",
-#              "Authorization": f"Bearer {api_key}"}
-
-#     payload = {
-#         "height": data.get("height"),
-#         "weight": data.get("weight"),
-#         "gender": data.get("gender"),
-#         "activity_level": data.get("activity_level"),
-#         "age": data.get("age"),
-#         "goal": data.get("goal")
-#     }
-#     response = requests.post(vultr_api_url, headers=headers, json=payload)
-#     if response.status_code == 200:
-#         return response.json().get('diet_chart')
-#     else:
-#         return {"error": "Failed to retrieve diet chart"}
-
 # Create your views here
 def index(request):
     return render(request, 'home/home.html', context={'page': "home"})
@@ -127,7 +105,6 @@ def prepare(request):
 
 
 def calculate(request):
-    print("Request method:", request.method)
     if request.method == 'POST':
         try:
             # Decode the JSON data sent in the request body
