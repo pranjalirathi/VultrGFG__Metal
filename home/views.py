@@ -6,13 +6,55 @@ import requests,json
 from .utils import *
 session_key = secrets.token_hex(32)
 
+# def bard(data):
+#     key="AIzaSyCxa5DEoAezgHi6POcFvDeRoBxPWfHrN6Y"
+#     url = f"https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key={key}"
+#     headers = {"Content-Type": "application/json"}
+#     data = {"prompt": {"text": f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me. Don't give me calories intake or macronutrients"}}
+#     response = requests.post(url, headers=headers, json=data)
+#     return dict(response.json()).get('candidates')[0].get('output') #read about webhooks in python flask
+
+
 def bard(data):
-    key="AIzaSyCxa5DEoAezgHi6POcFvDeRoBxPWfHrN6Y"
-    url = f"https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key={key}"
-    headers = {"Content-Type": "application/json"}
-    data = {"prompt": {"text": f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me. Don't give me calories intake or macronutrients"}}
-    response = requests.post(url, headers=headers, json=data)
-    return dict(response.json()).get('candidates')[0].get('output') #read about webhooks in python flask
+    key = "VBHWST6PTCC5W6RS72ORMETOBZO6YSO4UQIA"  
+    url = "https://api.vultrinference.com/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json"
+    }
+    
+    prompt_text = (
+        "Act as a certified nutritionist and create a detailed 7-day diet chart that supports the following individual’s "
+        "goals without listing calories or macronutrients. "
+        f"The individual’s details are as follows:\n"
+        f"- Height: {data.get('height')} cm\n"
+        f"- Weight: {data.get('weight')} kg\n"
+        f"- Gender: {data.get('gender')}\n"
+        f"- Activity Level: {data.get('activity_level')}\n"
+        f"- Age: {data.get('age')} years\n"
+        f"- Goal: {data.get('goal')} weight\n"
+        "Provide each meal plan in bullet points, including recommended food items for breakfast, lunch, dinner, and snacks."
+    )
+    
+    payload = {
+        "model": "llama2-7b-chat-Q5_K_M",
+        "messages": [
+            {"role": "user", "content": prompt_text}
+        ],
+        "max_tokens": 512,
+        "temperature": 0.7,
+        "top_k": 40,
+        "top_p": 0.9,
+        "stream": False
+    }
+    
+    response = requests.post(url, headers=headers, json=payload)
+    
+    print("from bard function")
+    print("API Response:", response.json())  
+    
+    output = response.json().get('choices', [])[0].get('message', {}).get('content', '')
+    return output
 
 # Create your views here
 def index(request):
@@ -70,38 +112,69 @@ def exercise(request, slug):
     else :
         return JsonResponse(data={"status":0, 'result': {}}, status=400)
 
+
+
+
+# def prepare(request):
+#     if request.method == 'POST':
+#         try:
+#             data = json.loads(request.body)
+#             print(request.headers)
+#             data = dict(data)
+#             if data.get('height') == None or data.get('weight')==None or data.get('gender')==None or data.get('activity_level') == None or data.get('age') ==None or data.get('goal') == None:
+#                 return JsonResponse({'diet-chart'+session_key: "Fill all the values and submit then try again"})
+            
+#             chart = str(bard(data))
+#             j=0
+#             for i in range(len(chart)):
+#                 if chart[i]=='*':
+#                     j=i
+#                     break
+#             chart=chart[j::1]
+#             chart=chart.replace('\n', '<br>')
+#             chart=chart.replace("**", "1. ", 1)
+#             chart=chart.replace("**", "", 1)
+#             chart=chart.replace("**", "2. ", 1)
+#             chart=chart.replace("**", "", 1)
+#             chart=chart.replace("**", "3. ", 1)
+#             chart=chart.replace("**", "", 1)
+#             chart=chart.replace("**", "4. ", 1)
+#             chart=chart.replace("**", "", 1)
+#             return JsonResponse({'diet-chart'+session_key: chart}, status=200)
+#         except json.JSONDecodeError:
+#             return JsonResponse({"status": "error", "message": "Invalid JSON data provided"}, status=400)
+#     else:
+#         return JsonResponse({"status": "error", "message": "Only POST requests are allowed"}, status=405)
+   
 def prepare(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            print(request.headers)
             data = dict(data)
-            if data.get('height') == None or data.get('weight')==None or data.get('gender')==None or data.get('activity_level') == None or data.get('age') ==None or data.get('goal') == None:
-                return JsonResponse({'diet-chart'+session_key: "Fill all the values and submit then try again"})
             
-            chart = str(bard(data))
-            j=0
+            required_fields = ['height', 'weight', 'gender', 'activity_level', 'age', 'goal']
+            if any(data.get(field) is None for field in required_fields):
+                return JsonResponse({"status": "error", "message": "Please fill in all fields and try again"}, status=400)
+            
+            chart = bard(data)
+            
+            j = 0
             for i in range(len(chart)):
-                if chart[i]=='*':
-                    j=i
+                if chart[i] == '*':
+                    j = i
                     break
-            chart=chart[j::1]
-            chart=chart.replace('\n', '<br>')
-            chart=chart.replace("**", "1. ", 1)
-            chart=chart.replace("**", "", 1)
-            chart=chart.replace("**", "2. ", 1)
-            chart=chart.replace("**", "", 1)
-            chart=chart.replace("**", "3. ", 1)
-            chart=chart.replace("**", "", 1)
-            chart=chart.replace("**", "4. ", 1)
-            chart=chart.replace("**", "", 1)
-            return JsonResponse({'diet-chart'+session_key: chart}, status=200)
+            chart = chart[j:].replace('\n', '<br>')
+            chart = chart.replace("**", "1. ", 1).replace("**", "", 1)
+            chart = chart.replace("**", "2. ", 1).replace("**", "", 1)
+            chart = chart.replace("**", "3. ", 1).replace("**", "", 1)
+            chart = chart.replace("**", "4. ", 1).replace("**", "", 1)
+            
+            return JsonResponse({"diet-chart": chart}, status=200)
+        
         except json.JSONDecodeError:
             return JsonResponse({"status": "error", "message": "Invalid JSON data provided"}, status=400)
     else:
         return JsonResponse({"status": "error", "message": "Only POST requests are allowed"}, status=405)
-   
-    
 
 
 def calculate(request):
@@ -129,6 +202,7 @@ def calculate(request):
             'calories': int(calories),
             'target_weight': data.get('target_weight'),
             'carb': macros.get('carbs'),
+
             'fat': macros.get('fat'),
             'protein': macros.get('protein'),
             'carb_per': macros['carb_per'],
