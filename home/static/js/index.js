@@ -112,7 +112,8 @@ function prepare(){
         return response.json()
     })
     .then(chart => {
-        document.querySelector('.chart-content').innerHTML=`<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400"> ${ chart["diet-chart"+StrForAuth] } <br><br>Do you like this Chart?</p>`
+        console.log("am printing from index.js", chart)
+        document.querySelector('.chart-content').innerHTML=`<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400"> ${ chart["diet-chart"] } <br><br>Do you like this Chart?</p>`
     })
 }
 
