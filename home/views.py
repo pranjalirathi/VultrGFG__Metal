@@ -6,42 +6,6 @@ import requests,json
 from .utils import *
 session_key = secrets.token_hex(32)
 
-
-# --------------------------------GEMINI API (OLD CODE)-----------------------------
-# def bard(data):
-#     key="AIzaSyCxa5DEoAezgHi6POcFvDeRoBxPWfHrN6Y"
-#     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={key}"
-#     headers = {"Content-Type": "application/json"}
-#     # data = {"contents":[{"parts":[{"text":f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me. Don't give me calories intake or macronutrients. Note: I want details about 4 times a meal and some extra suggestions like  drinking water etc. Do not add any extra lines or intro in the beginning of the response."}]}]}
-#     data = {
-#     "contents": [
-#         {
-#             "parts": [
-#                 {
-#                     "text": (
-#                         "Generate a detailed diet chart based on the following user information: "
-#                         f"Height: {data.get('height')} cm, "
-#                         f"Weight: {data.get('weight')} kg, "
-#                         f"Gender: {data.get('gender')}, "
-#                         f"Activity Level: {data.get('activity_level')}, "
-#                         f"Age: {data.get('age')}, "
-#                         f"Goal: {data.get('goal')}. "
-#                         "Provide a diet plan that includes four meals throughout the day (breakfast, lunch, dinner, and a snack), "
-#                         "and include extra suggestions for hydration and healthy habits. "
-#                         "Do not include calorie intake or macronutrient details. "
-#                         "Format the response clearly with headings for each meal and the extra suggestions. "
-#                         "Avoid any introductory or extra lines."
-#                     )
-#                 }
-#             ]
-#         }
-#     ]
-#     }
-#     response = requests.post(url, headers=headers, json=data)
-#     print("API Response: ", response.text)
-#     return dict(response.json()).get('candidates')[0].get('content').get('parts')[0].get('text') #read about webhooks in python flask
-
-
 def bard(data):
     key = "VBHWST6PTCC5W6RS72ORMETOBZO6YSO4UQIA"  
     url = "https://api.vultrinference.com/v1/chat/completions"
@@ -143,40 +107,6 @@ def exercise(request, slug):
     else :
         return JsonResponse(data={"status":0, 'result': {}}, status=400)
 
-
-
-
-# def prepare(request):
-#     if request.method == 'POST':
-#         try:
-#             data = json.loads(request.body)
-#             print(request.headers)
-#             data = dict(data)
-#             if data.get('height') == None or data.get('weight')==None or data.get('gender')==None or data.get('activity_level') == None or data.get('age') ==None or data.get('goal') == None:
-#                 return JsonResponse({'diet-chart'+session_key: "Fill all the values and submit then try again"})
-            
-#             chart = str(bard(data))
-#             j=0
-#             for i in range(len(chart)):
-#                 if chart[i]=='*':
-#                     j=i
-#                     break
-#             chart=chart[j::1]
-#             chart=chart.replace('\n', '<br>')
-#             chart=chart.replace("**", "1. ", 1)
-#             chart=chart.replace("**", "", 1)
-#             chart=chart.replace("**", "2. ", 1)
-#             chart=chart.replace("**", "", 1)
-#             chart=chart.replace("**", "3. ", 1)
-#             chart=chart.replace("**", "", 1)
-#             chart=chart.replace("**", "4. ", 1)
-#             chart=chart.replace("**", "", 1)
-#             return JsonResponse({'diet-chart'+session_key: chart}, status=200)
-#         except json.JSONDecodeError:
-#             return JsonResponse({"status": "error", "message": "Invalid JSON data provided"}, status=400)
-#     else:
-#         return JsonResponse({"status": "error", "message": "Only POST requests are allowed"}, status=405)
-   
 
 # --------------------NEW PREPARE FUNCTION --------------------------------
 def prepare(request):
