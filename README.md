@@ -1,6 +1,6 @@
 # Metal - Fitness and Nutrition Solutions <img src="https://metal-static.onrender.com/apple-touch-icon.png" height="30px">
 
-Metal is a Flask web application designed to assist users with their fitness journey by providing various features and functionalities related to exercise, diet planning, and BMI calculation.
+Metal is a Django web application designed to assist users with their fitness journey by providing various features and functionalities related to exercise, diet planning, and BMI calculation.
 
 
 ## Features 🚀
@@ -26,10 +26,10 @@ Metal is a Flask web application designed to assist users with their fitness jou
 ## Setup Instructions ⚙️
 
 1. Clone the repository.
-2. Set up a virtual environment.
+2. Set up a virtual environment (`pip install virtualenv`).
 3. Install dependencies (`pip install -r requirements.txt`).
 4. Configure application settings.
-5. Run the Flask application (`python app.py`).
+5. Run the Django server (`python manage.py runserver`).
 
 
 ## Acknowledgments 🙏
